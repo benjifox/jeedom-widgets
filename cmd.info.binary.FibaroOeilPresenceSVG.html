@@ -1,0 +1,54 @@
+<div style="width:90px;min-height:62px;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" title="#collectDate#">
+    <center>
+        <span class='cmdName' style="font-weight: bold;font-size : 12px;#hideCmdName#">#name_display#</span>
+        <span style="font-size: 3em;font-weight: bold;margin-top: 5px;" id="iconCmd#id#">
+          	<svg class="FibaroImg#id#">
+              	<path class="fibaro fibaro-capteur" d="M32.9,42.9l0.6-0.1l0.6-0.2l0.3-0.1c6.6-2.2,10.8-8.7,10-15.6l-0.1-0.7l-0.1-0.6C42.8,18,35.7,13,28,14h-0.3  l-0.6,0.1l-0.6,0.1l-0.6,0.2c-6.7,2-11,8.5-10.4,15.4v0.3l0.1,0.6c1.2,7.7,8.3,13.1,16.1,12.3l0.6-0.1L32.9,42.9" />
+				<g class="fibaro">
+                  <line y2="54.599998" x2="30" y1="54.599998" x1="21.9" />
+                  <polyline points="5.6,31.5 5.6,30.8 5.6,30.1 5.8,28.9 " />
+                  <path d="m 5.6,31.6 v 0.6 c 0.2,10 6.5,18.8 15.8,22.3 l 0.4,0.1" />
+                  <line y2="31.5" x2="54.400002" y1="31.6" x1="54.400002" />
+                  <path d="M 52.4,22.6 52.3,22.2 C 49.4,12.4 40.550713,5.6887169 30.350713,5.4887169 L 30,5.5" />
+                  <path d="M 7.6,22.5 7.7,22.1 C 10.6,12.4 19.4,5.6 29.6,5.5 H 30" />
+                  <path d="m 30,54.6 h 8.1 c 9.5,-3.4 16,-12.3 16.3,-22.4 v -0.6" />
+                  <path d="m 54.4,31.5 v -0.6 c -0.1,-2.4 0,-4 -1.6,-5.9" />
+                  <line y2="31.6" x2="5.5999999" y1="31.5" x1="5.5999999" />
+                  <path d="M 30,50.1 H 29.1 28.3 C 21.5,49.8 15.2,46.2 11.4,40.5 L 11.1,40 10.8,39.5 C 7.9,34.9 6.4,28.9 7.4,23.5 L 7.5,23 7.6,22.5" />
+                  <path d="m 52.4,22.5 0.1,0.5 0.1,0.5 c 1.1,5.3 -0.6,11.5 -3.4,16 l -0.3,0.5 -0.3,0.5 c -3.8,5.7 -10.1,9.2 -16.9,9.6 H 30.9 30" />
+                  <path d="M 5.8,28.9 V 28.6 C 5.9,27.4 6.4,26.2 7.2,25.2" />
+              	</g>
+            </svg>
+      	</span>
+    </center>
+    <script>
+    var borderColor   = ('#borderColor#' === '#'+'borderColor#') ? 'white' : '#borderColor#';
+    var presenceColor = ('#presenceColor#' === '#'+'presenceColor#') ? '#0090FF' : '#presenceColor#'
+      
+    jeedom.cmd.update['#id#'] = function(_options) {
+      $('#iconCmd#id# > svg.FibaroImg#id# .fibaro').css('stroke', borderColor);
+      if (parseInt(_options.display_value,10) == 1) {
+        $('#iconCmd#id# > svg.FibaroImg#id# .fibaro-capteur').css('fill','none');
+      }
+      else {
+        $('#iconCmd#id# > svg.FibaroImg#id# .fibaro-capteur').css('fill',presenceColor);
+      }
+    };
+      
+    jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#'});
+
+    </script>
+  	<style>
+      svg.FibaroImg#id# {
+        width: 65px;
+        height: 65px;
+      }
+      svg.FibaroImg#id# .fibaro {
+        stroke:white;
+        stroke-linecap:round;
+        stroke-linejoin:round;
+        stroke-opacity:1;
+        fill:none;
+      }
+  </style>
+</div>
